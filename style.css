@@ -5,8 +5,7 @@
     width: 100vw;
     height: 100vh;
 	margin: auto;
-	position: relative;
-	overflow: hidden;
+	position: relative;	
 }
 
 #start {
@@ -43,12 +42,99 @@
 }
 
 .enemy {
-	width: 150px;
+	width: 100px;
 	height: 400px;
 	position: absolute;
-	background-color: beige;
-	bottom: -400px;
+	background-color: rgb(255, 0, 0);
+	bottom: 0;
 	transition: all .5s;
+    animation-name: monsters;
+    animation-duration: 40s;
+    border: 1px solid black;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+@keyframes monsters {
+    5% {
+        left: 85%;
+        transform: scale(1.5);
+    }
+    10% {
+        left: 15%;
+        transform: scale(1);
+    }
+    15% {
+        left: 40%;
+        transform: scale(1.8);
+    }
+    20% {
+        left: 75%;
+        transform: scale(1.2);
+    }
+    25% {
+        left: 5%;
+        transform: scale(1.6);
+    }
+    30% {
+        left: 52%;
+        transform: scale(2);
+    }
+    35% {
+        left: 99%;
+        transform: scale(1.1);
+    }
+    40% {
+        left: 75%;
+        transform: scale(1.7);
+    }
+    45% {
+        left: 47%;
+        transform: scale(1.4);
+    }
+    50% {
+        left: 17%;
+        transform: scale(1.6);
+    }
+    55% {
+        left: 37%;
+        transform: scale(1.2);
+    }
+    60% {
+        left: 85%;
+        transform: scale(1.9);
+    }
+    65% {
+        left: 85%;
+        transform: scale(1.9);
+    }
+    70% {
+        left: 85%;
+        transform: scale(1.9);
+    }
+    75% {
+        left: 85%;
+        transform: scale(1.9);
+    }
+    80% {
+        left: 85%;
+        transform: scale(1.9);
+    }
+    85% {
+        left: 85%;
+        transform: scale(1.9);
+    }
+    90% {
+        left: 85%;
+        transform: scale(1.9);
+    }
+    95% {
+        left: 85%;
+        transform: scale(1.9);
+    }
+    100% {
+        left: 85%;
+        transform: scale(1.9);
+    }
 }
 
 .enemy.showing {
@@ -72,6 +158,3 @@
 	height: 50px;
 }
 
-p {
-    text-align: center;
-}
