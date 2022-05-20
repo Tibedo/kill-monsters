@@ -6,6 +6,7 @@
     height: 100vh;
 	margin: auto;
 	position: relative;	
+    overflow: hidden;
 }
 
 #start {
@@ -41,19 +42,15 @@
     transform: scale(1.05);
 }
 
-.enemy {
-	width: 100px;
-	height: 400px;
+.monster {
+	width:200px;
+    height: 350px;
 	position: absolute;
-	background-color: rgb(255, 0, 0);
 	bottom: 0;
-	transition: all .5s;
     animation-name: monsters;
     animation-duration: 40s;
-    border: 1px solid black;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
 }
+
 @keyframes monsters {
     5% {
         left: 85%;
@@ -137,24 +134,17 @@
     }
 }
 
-.enemy.showing {
+
+.monster.showing {
 	bottom: 0;
 }
 
-.enemy.shooting {
-	background-color: red;
+.monster.shooting {
+    background-color: red;
 }
 
-
-#enemy1 { left: 5px; }
-#enemy2 { left: 165px; }
-#enemy3 { left: 325px; }
-#enemy4 { left: 485px; }
-#enemy5 { left: 645px; }
-
-
-.enemy.dead {
-	background-color: gray;
-	height: 50px;
+.monster.dead {
+    display: none;
+	height: 20px;
 }
 
