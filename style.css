@@ -1,0 +1,77 @@
+#killBoxGame {
+    background-image: url(bg2.jpeg);
+    background-size: 100%;
+	background-color: black;
+    width: 100vw;
+    height: 100vh;
+	margin: auto;
+	position: relative;
+	overflow: hidden;
+}
+
+#start {
+    position: absolute;
+    top: 25px;
+	left: 3%;
+    color: white;
+    background-color: black;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid white;
+    cursor: pointer;
+}
+#start:hover {
+    transition: 1s;
+    transform: scale(1.05);
+}
+
+#health {
+	position: absolute;
+	top: 20px;
+	left: 25%;
+	height: 30px;
+	width: 50%;
+	background: linear-gradient(to right,#f63c3c,orange, #00ff2f);
+	transition: width .5s;
+    border: 1px solid white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px white;
+}
+#health:hover {
+    transition: 1s;
+    transform: scale(1.05);
+}
+
+.enemy {
+	width: 150px;
+	height: 400px;
+	position: absolute;
+	background-color: beige;
+	bottom: -400px;
+	transition: all .5s;
+}
+
+.enemy.showing {
+	bottom: 0;
+}
+
+.enemy.shooting {
+	background-color: red;
+}
+
+
+#enemy1 { left: 5px; }
+#enemy2 { left: 165px; }
+#enemy3 { left: 325px; }
+#enemy4 { left: 485px; }
+#enemy5 { left: 645px; }
+
+
+.enemy.dead {
+	background-color: gray;
+	height: 50px;
+}
+
+p {
+    text-align: center;
+}
