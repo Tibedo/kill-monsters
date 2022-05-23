@@ -1,44 +1,28 @@
 let i = 0
 
-function createMonsters() {
-
+function createZombies() {
 
 	let enemyZone = document.querySelector("#enemyZone")
-	//let monster = document.createElement("div")
-	let monster = document.createElement("img")
-	monster.src = "zombie.png"
-	monster.className = "monster"
-	//zombie.className = "enemy"
+	let Zombie = document.createElement("img")
+	Zombie.src = "zombie.png"
+	Zombie.className = "Zombie"
 	i++
 
 	if (i < 20) {
-		setTimeout(createMonsters, 2000)
+		setTimeout(createZombies, 2000)
 	}
 	else {
-		clearTimeout(createMonsters)
+		clearTimeout(createZombies)
 	}
 
-	enemyZone.appendChild(monster)
-	//monster.appendChild(zombie)
+	enemyZone.appendChild(Zombie)
+	//Zombie.appendChild(zombie)
 
-	/* 
-	let arr = []
-	arr.push(monster)
-	arr[0].id = "enemy1"
-	arr[1].id = "enemy2"
-	arr[2].id = "enemy3"
-	arr[3].id = "enemy4"
-	arr[4].id = "enemy5"
-	arr[0].id = "enemy1"
-	arr[0].id = "enemy1"
-	arr[0].id = "enemy1"
-	console.log(arr)
-	*/
 	
 }
-let startGame = document.querySelector("#start").addEventListener("click", createMonsters)
+let startGame = document.querySelector("#start").addEventListener("click", createZombies)
 
-let monster = document.querySelectorAll(".monster")
+let Zombie = document.querySelectorAll(".Zombie")
 
 
 // ******* HEALTH ****** //
@@ -56,76 +40,79 @@ function updateHealthPoints(points) {
 	}
 }
 
-
-function livingEnemies() {
-	return document.querySelectorAll(".monster:not(.dead)");
+// ****** LIFE Zombie ****** //
+function livingZombie() {
+	return document.querySelectorAll("img.Zombie:not(.dead)");
 }
+
+
+
 
 // ****** SHOOT ****** //
-function shoot(monster) {
-
-	monster.classList.add("dead");
+function shoot(Zombie) {
 	
+	Zombie.classList.add("dead");
 
-	if (!livingEnemies().length) {
+	if (!livingZombie().length) {
 		alert("You win!");
 		window.location.reload();
-	}
-
+	}	
 }
 
+//Zombie.addEventListener("click", () => shoot(Zombie))
 
 
-function monsterAttacksMe(monster) {
+
+
+// ****** Zombie ATTAK ******* //
+function ZombieAttacksMe(Zombie) {
 
 	if (healthPoints > 0) {
 
-		monster.classList.add("showing");
+		Zombie.classList.add("showing");
 
 		setTimeout(() => {
-			monsterShootsMe(monster);
+			ZombieShootsMe(Zombie);
 		}, 1000);
 
 		setTimeout(() => {
-			monster.classList.remove("showing");
+			Zombie.classList.remove("showing");
 		}, 3000);
-
 	}
-
-
 }
 
 
-function monsterShootsMe(monster) {
 
-	if (!monster.classList.contains("dead")) {
 
-		monster.classList.add("shooting");
+// ****** Zombie SHOOT ******** //
+function ZombieShootsMe(Zombie) {
+	let main = document.querySelector("#killBoxGame")
+	if (!Zombie.classList.contains("dead")) {
+
+		main.classList.add("shooting");
 		updateHealthPoints(healthPoints - 5);
 
 		setTimeout(() => {
-			monster.classList.remove("shooting");
-		}, 200);
-
+			main.classList.remove("shooting");
+		}, 100);
 	}
-
 }
 
 
-function randomMonsterAttacks() {
 
-	let randomMonsterNo = Math.random() * livingEnemies().length;
-	randomMonsterNo = Math.floor(randomMonsterNo);
-	let monster = livingEnemies()[randomMonsterNo];
+
+// ******* RANDOM ATTAK ******* //
+function randomZombieAttacks() {
+
+	let randomZombieNo = Math.random() * livingZombie().length;
+	randomZombieNo = Math.floor(randomZombieNo);
+	let Zombie = livingZombie()[randomZombieNo];
 
 	let randomDelay = Math.random() * 2000 + 1000;
 
 	setTimeout(() => {
-		monsterAttacksMe(monster);
-		randomMonsterAttacks();
+		ZombieAttacksMe(Zombie);
+		randomZombieAttacks();
 	}, randomDelay);
-
 }
-
-monster.addEventListener("click", shoot(monster))
-document.querySelector("#start").addEventListener("click", randomMonsterAttacks)
+document.querySelector("#start").addEventListener("click", randomZombieAttacks)
